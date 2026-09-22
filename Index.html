@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youth Café - Kawiarenka Młodzieżowa</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0E2A3A; color: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 100vh; padding: 20px 16px; text-align: center; }
+        .title { font-size: 36px; font-weight: 800; color: #ffffff; text-shadow: 2px 2px 0px #E58B8B; margin-top: 10px; }
+        .subtitle { font-size: 15px; color: #ffffff; margin-top: 4px; opacity: 0.9; }
+        .categories { display: flex; gap: 8px; margin-top: 15px; justify-content: center; width: 100%; max-width: 360px; }
+        .cat-btn { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; padding: 8px 12px; border-radius: 20px; font-size: 13px; cursor: pointer; flex: 1; }
+        .cat-btn.active { background: #E58B8B; border-color: #E58B8B; font-weight: bold; }
+        .card-container { width: 100%; max-width: 360px; background: rgba(255, 255, 255, 0.07); border: 2px solid rgba(229, 139, 139, 0.4); border-radius: 24px; padding: 30px 20px; margin: 20px 0; min-height: 160px; display: flex; align-items: center; justify-content: center; }
+        .question-text { font-size: 19px; line-height: 1.5; font-weight: 500; color: #ffffff; }
+        .btn-draw { background-color: #E58B8B; color: #ffffff; border: none; padding: 18px 32px; font-size: 18px; font-weight: 700; border-radius: 50px; cursor: pointer; width: 100%; max-width: 320px; box-shadow: 0 6px 20px rgba(229, 139, 139, 0.4); }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="title">Youth Café</h1>
+        <p class="subtitle">-Kawiarenka Młodzieżowa-</p>
+        <div class="categories">
+            <button class="cat-btn active" onclick="setCategory('all', this)">Wszystkie</button>
+            <button class="cat-btn" onclick="setCategory('chill', this)">Na luzie</button>
+            <button class="cat-btn" onclick="setCategory('deep', this)">Głębsze</button>
+            <button class="cat-btn" onclick="setCategory('would_you', this)">Co wolisz?</button>
+        </div>
+    </div>
+    <div class="card-container">
+        <p class="question-text" id="questionBox">Kliknij przycisk poniżej, aby wylosować temat do rozmowy! ☕</p>
+    </div>
+    <button class="btn-draw" onclick="drawQuestion()">Wylosuj temat 🎲</button>
+
+    <script>
+        const questions = {
+            chill: [
+                "Jaka jest Twoja ulubiona piosenka na poprawę humoru?", 
+                "Gdybyś mógł/mogła zjeść tylko jedno danie do końca życia, co by to było?", 
+                "Jaki film lub serial polecasz każdemu?"
+            ],
+            deep: [
+                "Gdybyś mógł/mogła zmienić jedną rzecz w świecie, co by to było?", 
+                "Co najbardziej cenisz w prawdziwym przyjacielu?", 
+                "Co sprawia, że czujesz się naprawdę szczęśliwy/a?"
+            ],
+            would_you: [
+                "Co wolisz: znać przyszłość czy móc zmieniać przeszłość?", 
+                "Co wolisz: móc latać czy być niewidzialnym/ą?", 
+                "Co wolisz: walczyć z jedną kaczką wielkości konia czy setką koni wielkości kaczki?"
+            ]
+        };
+
+        let currentCategory = 'all';
+
+        function setCategory(cat, btn) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        function drawQuestion() {
+            let pool = (currentCategory === 'all') 
+                ? [...questions.chill, ...questions.deep, ...questions.would_you] 
+                : questions[currentCategory];
+            const randomIndex = Math.floor(Math.random() * pool.length);
+            document.getElementById('questionBox').innerText = pool[randomIndex];
+        }
+    </script>
+</body>
+</html>
