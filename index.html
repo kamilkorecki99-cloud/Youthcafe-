@@ -6,49 +6,421 @@
     <title>Youth Café - Kawiarenka Młodzieżowa</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0E2A3A; color: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 100vh; padding: 20px 16px; text-align: center; }
-        .title { font-size: 36px; font-weight: 800; color: #ffffff; text-shadow: 2px 2px 0px #E58B8B; margin-top: 10px; }
-        .subtitle { font-size: 15px; color: #ffffff; margin-top: 4px; opacity: 0.9; }
-        .categories { display: flex; gap: 8px; margin-top: 15px; justify-content: center; width: 100%; max-width: 360px; }
-        .cat-btn { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; padding: 8px 12px; border-radius: 20px; font-size: 13px; cursor: pointer; flex: 1; }
-        .cat-btn.active { background: #E58B8B; border-color: #E58B8B; font-weight: bold; }
-        .card-container { width: 100%; max-width: 360px; background: rgba(255, 255, 255, 0.07); border: 2px solid rgba(229, 139, 139, 0.4); border-radius: 24px; padding: 30px 20px; margin: 20px 0; min-height: 160px; display: flex; align-items: center; justify-content: center; }
-        .question-text { font-size: 19px; line-height: 1.5; font-weight: 500; color: #ffffff; }
-        .btn-draw { background-color: #E58B8B; color: #ffffff; border: none; padding: 18px 32px; font-size: 18px; font-weight: 700; border-radius: 50px; cursor: pointer; width: 100%; max-width: 320px; box-shadow: 0 6px 20px rgba(229, 139, 139, 0.4); }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background-color: #0E2A3A; 
+            color: #ffffff; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: space-between; 
+            min-height: 100vh; 
+            padding: 20px 16px; 
+            text-align: center; 
+        }
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 360px;
+        }
+        .logo-text {
+            font-size: 32px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+        .logo-subtext {
+            font-size: 15px;
+            color: #E58B8B;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        .categories { 
+            display: flex; 
+            gap: 8px; 
+            margin-top: 10px; 
+            justify-content: center; 
+            width: 100%; 
+            flex-wrap: wrap; 
+        }
+        .cat-btn { 
+            background: rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            color: #fff; 
+            padding: 10px 12px; 
+            border-radius: 20px; 
+            font-size: 13px; 
+            cursor: pointer; 
+            flex: 1 1 40%; 
+            transition: all 0.2s ease;
+        }
+        .cat-btn.active { 
+            background: #E58B8B; 
+            border-color: #E58B8B; 
+            font-weight: bold; 
+        }
+        .card-container { 
+            width: 100%; 
+            max-width: 360px; 
+            background: rgba(255, 255, 255, 0.07); 
+            border: 2px solid rgba(229, 139, 139, 0.4); 
+            border-radius: 24px; 
+            padding: 30px 20px; 
+            margin: 20px 0; 
+            min-height: 180px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .question-text { 
+            font-size: 18px; 
+            line-height: 1.5; 
+            font-weight: 500; 
+            color: #ffffff; 
+        }
+        .btn-draw { 
+            background-color: #E58B8B; 
+            color: #ffffff; 
+            border: none; 
+            padding: 18px 32px; 
+            font-size: 18px; 
+            font-weight: 700; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            width: 100%; 
+            max-width: 320px; 
+            box-shadow: 0 6px 20px rgba(229, 139, 139, 0.4); 
+        }
     </style>
 </head>
 <body>
-    <div>
-        <h1 class="title">Youth Café</h1>
-        <p class="subtitle">-Kawiarenka Młodzieżowa-</p>
+    <div class="header-container">
+        <h1 class="logo-text">Youth Café</h1>
+        <p class="logo-subtext">☕ Kawiarenka Młodzieżowa ☕</p>
         <div class="categories">
-            <button class="cat-btn active" onclick="setCategory('all', this)">Wszystkie</button>
-            <button class="cat-btn" onclick="setCategory('chill', this)">Na luzie</button>
-            <button class="cat-btn" onclick="setCategory('deep', this)">Głębsze</button>
-            <button class="cat-btn" onclick="setCategory('would_you', this)">Co wolisz?</button>
+            <button class="cat-btn active" onclick="setCategory('all', this)">Wszystkie (300)</button>
+            <button class="cat-btn" onclick="setCategory('chill', this)">Na luzie (100)</button>
+            <button class="cat-btn" onclick="setCategory('deep', this)">Głębsze (100)</button>
+            <button class="cat-btn" onclick="setCategory('would_you', this)">Co wolisz? (100)</button>
         </div>
     </div>
+
     <div class="card-container">
         <p class="question-text" id="questionBox">Kliknij przycisk poniżej, aby wylosować temat do rozmowy! ☕</p>
     </div>
+
     <button class="btn-draw" onclick="drawQuestion()">Wylosuj temat 🎲</button>
 
     <script>
         const questions = {
             chill: [
-                "Jaka jest Twoja ulubiona piosenka na poprawę humoru?", 
-                "Gdybyś mógł/mogła zjeść tylko jedno danie do końca życia, co by to było?", 
-                "Jaki film lub serial polecasz każdemu?"
+                "Gdybyś mógł/mogła zjeść kolację z dowolną postacią fikcyjną, kto by to był?",
+                "Jaka jest Twoja najbardziej obciachowa ulubiona piosenka (guilty pleasure)?",
+                "Gdybyś musiał/a jeść tylko jeden posiłek do końca życia, co by to było?",
+                "Jaka była Twoja najśmieszniejsza wpadka w szkole lub w pracy?",
+                "Gdybyś mógł/mogła teleportować się teraz w jedno miejsce na świecie, gdzie byś poleciał/a?",
+                "Jaki jest Twój ulubiony zapach z dzieciństwa?",
+                "Czego zupełnie nie potrafisz robić, mimo że większość ludzi uważa to za łatwe?",
+                "Gdyby Twoje życie miało motyw muzyczny, jaka piosenka grałaby w tle?",
+                "Jaki jest najbardziej niepotrzebny talent, jaki posiadasz?",
+                "Jaka jest Twoja ulubiona pora dnia i dlaczego?",
+                "Gdybyś wygrał/a milion złotych dzisiaj, co kupił(a)byś jako pierwsze?",
+                "Jaki film możesz oglądać w nieskończoność bez nudy?",
+                "Wolne opowiadanie historii czy szybkie opowiadanie dowcipów?",
+                "Jaka jest Twoja ulubiona przekąska do oglądania seriali?",
+                "Gdybyś mógł/mogła opanować dowolny język w jedną noc, co by to było?",
+                "Jaki był Twój ulubiony przedmiot w szkole podstawowej?",
+                "Jaki był Twój pierwsze wymarzony zawód z dzieciństwa?",
+                "Czy masz jakieś dziwne nawyki lub przyzwyczajenia?",
+                "Gdybyś był/a zwierzęciem, czym byś był/a i dlaczego?",
+                "Jaka jest najdziwniejsza rzecz, jaką kiedykolwiek zjadłeś/aś?",
+                "Wolny weekend na łonie natury czy maraton w grze/serialu?",
+                "Jaka aplikacja na Twoim telefonie zabiera Ci najwięcej czasu?",
+                "Gdybyś mógł/mogła zamienić się życiem z kimś na jeden dzień, kogo byś wybrał/a?",
+                "Jaki jest Twój ulubiony sposób na relaks po ciężkim dniu?",
+                "Czy wierzysz w istnienie cywilizacji pozaziemskich?",
+                "Jaka była najlepsza wycieczka w Twoim życiu?",
+                "Gdybyś miał/a otworzyć własną restaurację, jakie serwował(a)byś jedzenie?",
+                "Jaki trend internetowy najbardziej Cię denerwuje?",
+                "Jaka jest Twoja ulubiona gra planszowa lub komputerowa?",
+                "Czy wolisz wstawać wcześnie rano czy siedzieć do późna w nocy?",
+                "Gdybyś mógł/mogła cofnąć się w czasie do jakiejś epoki, do której byś się udał/a?",
+                "Jaki jest Twój ulubiony napój na ciepło i na zimno?",
+                "Czy pamiętasz swój pierwszy koncert lub wydarzenie na żywo?",
+                "Gdybyś mógł/mogła mieć dowolną supermoc, co by to było?",
+                "Jaka była najlepsza rada, jaką kiedykolwiek dostałeś/aś od kogoś na luzie?",
+                "Czy wolisz spędzać czas w dużym mieście czy na wsi?",
+                "Jaka jest Twoja ulubiona pora roku i dlaczego?",
+                "Gdyby Twoje auto/rower miały imię, jak by się nazywały?",
+                "Jaka jest Twoja ulubiona rzecz w Twoim pokoju?",
+                "Wolne chwile przy książce czy przy dobrym podcaście?",
+                "Gdybyś mógł/mogła nauczyć się grać na dowolnym instrumencie w sekundę, co by to było?",
+                "Jaki był najlepszy prezent, jaki kiedykolwiek dostałeś/aś?",
+                "Czy lubisz niespodzianki, czy wolisz wszystko planować?",
+                "Jaka jest Twoja ulubiona potrawa z kuchni zagranicznej?",
+                "Gdybyś pisał/a autobiografię, jaki nosiłaby tytuł?",
+                "Jakie jest Twoje ulubione słowo w języku polskim lub obcym?",
+                "Gdybyś mógł/mogła stworzyć nowe święto państwowe, co byśmy świętowali?",
+                "Jaka była Twoja ulubiona zabawka w dzieciństwie?",
+                "Czy wolisz spędzać wakacje nad morzem czy w górach?",
+                "Jaka piosenka zawsze poprawia Ci humor, niezależnie od sytuacji?",
+                "Gdybyś miał/a przetrwać na bezludnej wyspie, jakie 3 przedmioty zabierzesz?",
+                "Jaki jest Twój ulubiony kolor ubrań?",
+                "Czy masz jakieś ulubione cytaty z filmów lub książek?",
+                "Gdybyś musiał/a zmienić swoje imię, jakie byś wybrał/a?",
+                "Jaki jest Twój sprytny patent na szybkie zasypianie?",
+                "Wolne tempo i odpoczynek czy szybkie tempo i dużo aktywności?",
+                "Jaka była najśmieszniejsza rzecz, jaka przydarzyła Ci się podczas podróży?",
+                "Gdybyś mógł/mogła zmienić kolor nieba na jeden dzień, jaki byś wybrał/a?",
+                "Jaki jest Twój ulubiony deser lub słodkość?",
+                "Czy potrafisz tańczyć lub masz swój ulubiony ruch taneczny?",
+                "Gdybyś miał/a opisać siebie za pomocą trzech emoji, jakie by to były?",
+                "Jaki superbohater jest Twoim zdaniem najbardziej przereklamowany?",
+                "Czy masz jakieś hobby, o którym mało kto wie?",
+                "Gdybyś mógł/mogła natychmiast stać się profesjonalistą w dowolnym sporcie, co by to było?",
+                "Jaka była Twoja ulubiona kreskówka z dzieciństwa?",
+                "Czy wolisz pisać wiadomości tekstowe czy dzwonić?",
+                "Gdybyś miał/a wehikuł czasu, czy wolał(a)byś skoczyć w przyszłość czy w przeszłość?",
+                "Jaki jest Twój ulubiony rodzaj kawy lub herbaty?",
+                "Gdybyś musiał/a nosić jeden strój przez cały rok, jak by wyglądał?",
+                "Jaka była najbardziej absurdalna plotka, jaką o sobie słyszałeś/aś?",
+                "Czy wolisz domowe jedzenie czy wyjścia do restauracji?",
+                "Gdybyś mógł/mogła zaprosić 3 znane osoby na pizzę, kogo byś wybrał/a?",
+                "Jaki talent artystyczny chciał(a)byś posiadać?",
+                "Jaka jest Twoja ulubiona reakcja na nudę?",
+                "Gdyby powstał komiks o Twoim życiu, jak nazywałby się główny złoczyńca?",
+                "Czy masz swoją ulubioną tradycję rodzinną?",
+                "Gdybyś miał/a stworzyć własną markę odzieżową, jak by się nazywała?",
+                "Jaki jest Twój ulubiony owoc lub warzywo?",
+                "Wolne spacerowanie bez celu czy spacer z konkretnym punktem docelowym?",
+                "Gdybyś mógł/mogła wymienić się umiejętnościami z przyjacielem, co byś wziął/wzięła?",
+                "Jaka jest Twoja opinia na temat hawajskiej pizzy z ananasem?",
+                "Czy zdarzyło Ci się kiedyś zgubić w dziwnym miejscu?",
+                "Gdybyś prowadził/a audycję radiową, o czym by była?",
+                "Jaki jest Twój ulubiony zapach natury (np. deszcz, las, skoszona trawa)?",
+                "Czy masz jakiś przedmiot z dzieciństwa, do którego nadal masz sentyment?",
+                "Gdybyś był/a reżyserem, jaki gatunek filmu nakręcił(a)byś najchętniej?",
+                "Jaka jest najzabawniejsza rzecz, jaką kiedykolwiek kupiłeś/aś pod wpływem chwili?",
+                "Czy wolisz teatr, kino czy mecze na żywo?",
+                "Gdybyś mógł/mogła sprawić, że jedna rzecz zniknie ze świata na zawsze, co by to było?",
+                "Jaki jest Twój sprawdzony sposób na gorszy dzień?",
+                "Czy jesteś typem osoby, która planuje wyjazd z wyprzedzeniem, czy spływa na żywioł?",
+                "Gdybyś mógł/mogła wybudować swój wymarzony dom, gdzie by stał?",
+                "Jakie były najlepsze lody, jakie kiedykolwiek jadłeś/aś?",
+                "Czy potrafisz utrzymać tajemnicę, czy łatwo z Ciebie coś wyciągnąć?",
+                "Gdybyś miał/a zaśpiewać coś na karaoke bez przygotowania, co byś wybrał/a?",
+                "Jaki jest Twój ulubiony rekwizyt lub gadżet technologiczny?",
+                "Czy łatwo nawiązujesz kontakty z novymi ludźmi na imprezach/spotkaniach?",
+                "Gdybyś spędził/a dzień bez telefonu, co robił(a)byś przez cały czas?",
+                "Jaka była najbardziej szalona rzecz, jaką zrobiłeś/aś dla zabawy?",
+                "Gdybyś mógł/mogła dać jednodniową zasadę obowiązującą całe miasto, co by to było?"
             ],
             deep: [
-                "Gdybyś mógł/mogła zmienić jedną rzecz w świecie, co by to było?", 
-                "Co najbardziej cenisz w prawdziwym przyjacielu?", 
-                "Co sprawia, że czujesz się naprawdę szczęśliwy/a?"
+                "Co sprawia, że czujesz się naprawdę doceniony/a przez innych?",
+                "Jakie wydarzenie z przeszłości najbardziej ukształtowało Twój charakter?",
+                "Czym dla Ciebie jest prawdziwa przyjaźń?",
+                "Gdybyś mógł/mogła zmienić jedną rzecz w tym, jak wychowuje się dzisiejszą młodzież, co by to było?",
+                "Co według Ciebie nadaje życiu największy sens?",
+                "Jak radzisz sobie ze stresem i trudnymi emocjami?",
+                "Czego najbardziej boisz się w swojej przyszłości?",
+                "Czy uważasz, że przebaczenie jest zawsze możliwe? Dlaczego tak lub nie?",
+                "Jaka jest najważniejsza wartość, którą kierujesz się w życiu?",
+                "Kiedy czujesz się najbardziej sobą?",
+                "Jak myślisz, co dzieje się po drugiej stronie życia?",
+                "Co jest trudniejsze: mówienie prawdy czy oszczędzanie czyichś uczuć?",
+                "Czy doświadczyłeś/aś kiedyś sytuacji, którą nazwał(a)byś „cudem” lub niezwykłym zbiegiem okoliczności?",
+                "Jakie cechy najbardziej cenisz u ludzi, a jakich nie tolerujesz?",
+                "Czy łatwo przychodzi Ci proszenie o pomoc, gdy jej potrzebujesz?",
+                "Za co w swoim życiu jesteś najbardziej wdzięczny/a w tym momencie?",
+                "Co sprawia, że dane miejsce staje się dla Ciebie „domem”?",
+                "Jakie jest Twoje największe marzenie, o którym rzadko głośno mówisz?",
+                "Jak rozumiesz pojęcie wolności?",
+                "Czy wierzysz, że wszystko w życiu dzieje się z jakiegoś powodu?",
+                "Jakie jest najbardziej wartościowe doświadczenie, jakiego nauczyła Cię porażka?",
+                "Czy łatwo ufasz nowo poznanym osobom?",
+                "Gdybyś miał/a napisać list do siebie sprzed 5 lat, co byś sobie poradził/a?",
+                "Czym jest dla Ciebie miłość i jak poznajesz, że jest prawdziwa?",
+                "Jak oceniasz wpływ mediów społecznościowych na naszą wrażliwość i relacje?",
+                "Co uważasz za swój największy sukces osobisty do tej pory?",
+                "Czy masz wrażenie, że świat zmierza w dobrą czy w złą stronę?",
+                "Jak zdefiniował(a)byś pojęcie duchowości?",
+                "Czy uważasz, że ludzie z natury są dobrzy, czy raczej muszą się tego uczyć?",
+                "Co sprawia, że tracisz do kogoś szacunek?",
+                "W jakich momentach czujesz się najbardziej samotny/a, nawet będąc wśród ludzi?",
+                "Jakie pytanie chciał(a)byś zadać Stwórcy lub Wszechświatowi, gdybyś miał/a taką okazję?",
+                "Czy potrafisz przyznać się do błędu od razu, czy potrzebujesz na to czasu?",
+                "Jakie znaczenie ma dla Ciebie sprawiedliwość?",
+                "Co sprawia, że czujesz pokój w sercu?",
+                "Jakie według Ciebie są największe wyzwania, przed którymi stoi Twoje pokolenie?",
+                "Czy żałujesz jakiejś podjętej w przeszłości decyzji?",
+                "Czym różni się według Ciebie szczęście od radości?",
+                "Jak radzisz sobie z poczuciem niesprawiedliwości w świecie?",
+                "Jak wygląda Twoje idealne wsparcie, kiedy przeżywasz trudny czas?",
+                "Co sprawia, że dana osoba jest dla Ciebie autorytetem?",
+                "Czy uważasz, że cierpienie może czegoś wartościowego nauczyć?",
+                "Jak myślisz, co powstrzymuje ludzi przed byciem w pełni szczerymi ze sobą?",
+                "Czy łatwo wybaczasz samemu/samej sobie własne błędy?",
+                "Jaka jest rola nadziei w życiu człowieka?",
+                "Czego brakuje współczesnemu światu najbardziej?",
+                "Czy uważasz, że każdy człowiek ma w życiu do spełnienia określoną misję?",
+                "Jak reagujesz, gdy ktoś ma zupełnie inne poglądy na świat niż Ty?",
+                "Co powoduje, że czujesz głęboką satysfakcję ze swojego dnia?",
+                "Gdybyś mógł/mogła przekazać światu jedną prostą prawdę, co by to było?",
+                "Czy czujesz, że masz wpływ na otaczającą Cię rzeczywistość?",
+                "Co sprawia, że relacja z drugim człowiekiem staje się naprawdę głęboka?",
+                "Czym dla Ciebie jest odwaga w codziennym życiu?",
+                "Jak zmieniło się Twoje postrzeganie świata w ciągu ostatnich 3 lat?",
+                "Czy wierzysz, że w każdym człowieku jest iskra dobra, niezależnie od tego, co zrobił?",
+                "Jak radzisz sobie z rozczarowaniem, gdy sprawy nie idą po Twojej myśli?",
+                "Co sprawia, że czujesz fascynację światem i życiem?",
+                "Jak rozumiesz pojęcie odpowiedzialności za siebie i za innych?",
+                "Czy uważasz, że wyciszenie i samotność są człowiekowi potrzebne?",
+                "Jakie myśli najczęściej nie dają Ci zasnąć w nocy?",
+                "Czym jest dla Ciebie uczciwość w relacjach?",
+                "Czy odczuwasz czasem presję ze strony otoczenia i jak na nią reagujesz?",
+                "Co uważasz za największą barierę w budowaniu dobrych relacji międzyludzkich?",
+                "Jak oceniasz rolę tradycji i wartości w dzisiejszym, szybkim świecie?",
+                "Co sprawia, że czujesz się zmotywowany/a do działania i rozwoju?",
+                "Czy według Ciebie wyrozumiałość dla innych ma swoje granice?",
+                "Jak definiujesz sukces życiowy — po czym poznasz, że dobrze przeżyłeś/aś życie?",
+                "Czy kiedykolwiek poczułeś/aś zachwyt nad czymś tak prostym jak zachód słońca czy rozmowa?",
+                "Co jest dla Ciebie najważniejsze podczas podejmowania trudnych decyzji?",
+                "Czy uważasz, że każdy człowiek zasługuje na drugą szansę?",
+                "Jakie znaczenie ma dla Ciebie poczucie przynależności do jakiejś grupy lub społeczności?",
+                "Co sądzisz o bezinteresowności — czy ludzie potrafią robić coś całkowicie bezinteresownie?",
+                "Czego najbardziej poszukujesz w innych ludziach?",
+                "Jak odróżniasz w życiu to, co ważne, od tego, co tylko pilne?",
+                "Czy masz w życiu kogoś, przy kim nie musisz udawać ani zakładać żadnej maski?",
+                "Co sądzisz o sztuce odpuszczania spraw, na które nie mamy wpływu?",
+                "Jak myślisz, skąd bierze się w ludziach potrzeba poszukiwania czegoś większego od nich samych?",
+                "Co sprawia, że czujesz się bezpiecznie?",
+                "Czy uważasz, że ludzie zmieniają się na lepsze z biegiem lat?",
+                "Jak oceniasz rolę empatii w naszym codziennym życiu?",
+                "Co pomaga Ci podnieść się po porażce lub trudnym momencie?",
+                "Czy według Ciebie prawda zawsze obroni się sama?",
+                "Jak radzisz sobie z poczuciem zagubienia, gdy nie wiesz, dokąd zmierzasz?",
+                "Czym dla Ciebie jest szacunek do samego siebie?",
+                "Co sprawia, że wierzysz w lepsze jutro?",
+                "Jak reagujesz na słabości u siebie i u innych osób?",
+                "Gdybyś mógł/mogła nauczyć się jednej cechy charakteru, której Ci brakuje, co by to było?",
+                "Czy czujesz, że żyjesz w zgodzie ze swoimi przekonaniami?",
+                "Jak myślisz, dlaczego ludziom tak trudno słuchać się nawzajem bez oceniania?",
+                "Czym według Ciebie jest wdzięczność i jak ją praktykować?",
+                "Jak myślisz, co tworzy prawdziwy autorytet w oczach młodych ludzi?",
+                "Czy uważasz, że warto ryzykować dla ważnych rzeczy, czy lepiej stawiać na bezpieczeństwo?",
+                "Jak poradzić sobie z poczuciem zazdrości lub porównywania się z innymi?",
+                "Co daje Ci poczucie siły w trudnych sytuacjach?",
+                "Czy uważasz, że piękno leży w oku patrzącego, czy istnieją uniwersalne wartości estetyczne?",
+                "Jak radzisz sobie z krytyką ze strony innych ludzi?",
+                "Co najbardziej pomaga Ci budować poczucie własnej wartości?",
+                "Czy według Ciebie przebaczenie oznacza zapomnienie o krzywdzie?",
+                "Co sprawia, że czujesz głęboką więź z naturą lub otaczającym światem?",
+                "Gdybyś miał/a zostawić po sobie jedno przesłanie dla przyszłych pokoleń, co by to było?"
             ],
             would_you: [
-                "Co wolisz: znać przyszłość czy móc zmieniać przeszłość?", 
-                "Co wolisz: móc latać czy być niewidzialnym/ą?", 
-                "Co wolisz: walczyć z jedną kaczką wielkości konia czy setką koni wielkości kaczki?"
+                "Wolisz znać przyszłość czy móc zmieniać przeszłość?",
+                "Wolisz spędzić wakacje na piaszczystej plaży czy w zimowych górach?",
+                "Wolisz mieć możliwość latania czy teleportacji?",
+                "Wolisz czytać książkę czy oglądać film na podstawie tej książki?",
+                "Wolisz zjeść słodkie śniadanie czy wytrawne?",
+                "Wolisz rozmawiać przez telefon czy pisać wiadomości tekstowe?",
+                "Wolisz pracować w zespole czy w pojedynkę?",
+                "Wolisz wieczny upał czy wieczny chłód?",
+                "Wolisz mieszkać w centrum tętniącego życiem miasta czy w cichym domku pod lasem?",
+                "Wolisz wiedzieć wszystko o kosmosie czy wiedzieć wszystko o głębinach oceanów?",
+                "Wolisz wstawać o 5:00 rano czy kłaść się o 3:00 w nocy?",
+                "Wolisz zjeść obiad w ekskluzywnej restauracji czy fast food z przyjaciółmi w aucie?",
+                "Wolisz oglądać film w kinie czy w domu pod kocykiem?",
+                "Wolisz mieć 10 dobrych znajomych czy 1 prawdziwego przyjaciela?",
+                "Wolisz zawsze musieć mówić to, co myślisz, czy nigdy więcej nic nie powiedzieć?",
+                "Wolisz podróżować tylko po Polsce czy tylko po zagranicy?",
+                "Wolisz umieć grać na każdym instrumencie czy mówić w każdym języku świata?",
+                "Wolisz zrezygnować z muzyki na rok czy ze swoich ulubionych potraw na rok?",
+                "Wolisz spędzić wieczór na głośnej imprezie czy przy spokojnej planszówce?",
+                "Wolisz nie mieć dostępu do internetu przez tydzień czy nie mieć dostępu do prądu przez 2 dni?",
+                "Wolisz jeździć superszybkim samochodem sportowym czy komfortowym kamperem?",
+                "Wolisz dostać prezent niespodziankę czy dokładnie to, o co poprosiłeś/aś?",
+                "Wolisz nosić tylko czarne ubrania czy tylko kolorowe i wzorzyste?",
+                "Wolisz pić tylko kawę czy tylko herbatę do końca życia?",
+                "Wolisz być niewidzialny/a czy umieć czytać w myślach?",
+                "Wolisz mieć psa czy kota?",
+                "Wolisz mieszkać w starym zamku czy w nowoczesnym penthousie?",
+                "Wolisz oglądać mecze sportowe na żywo czy śledzić je w telewizji?",
+                "Wolisz zawsze przychodzić 15 minut za wcześnie czy 5 minut za późno?",
+                "Wolisz jeść tylko pizze czy tylko sushi do końca życia?",
+                "Wolisz żyć bez mediów społecznościowych czy bez platform streamingowych (Netflix, YouTube itp.)?",
+                "Wolisz spędzić dzień na basenie czy na kajakach na rzece?",
+                "Wolisz uczyć się przedmiotów ścisłych czy humanistycznych?",
+                "Wolisz mieć nielimitowane darmowe jedzenie czy nielimitowane darmowe podróże?",
+                "Wolisz być mistrzem w jednym fachu czy wiedzieć po trochu o wszystkim?",
+                "Wolisz żyć w świecie bez muzyki czy w świecie bez sztuki i obrazów?",
+                "Wolisz gotować dla kogoś czy zmywać po posiłku?",
+                "Wolisz mieć możliwość rozmawiania ze zwierzętami czy rozumienia wszystkich ludzkich emocji?",
+                "Wolisz spędzić rok w dzikiej dżungli czy na stacji badawczej na Antarktydzie?",
+                "Wolisz zawsze znać prawdę, nawet bolesną, czy czasem żyć w słodkiej nieświadomości?",
+                "Wolisz spędzić cały dzień w parku rozrywki czy w spokojnym spa?",
+                "Wolisz mieć superpamięć i pamiętać wszystko czy umieć błyskawicznie zapominać o złych rzeczach?",
+                "Wolisz jeździć na rowerze czy na hulajnodze?",
+                "Wolisz spędzać święta w ogromnym gronie czy w kameralnej atmosferze?",
+                "Wolisz mieć pracę pełną wrażeń i podróży czy spokojną i stabilną na miejscu?",
+                "Wolisz jeść lody w kubeczku czy w chrupiącym rożku?",
+                "Wolisz być najbardziej utalentowaną osobą w pokoju czy najbardziej lubianą?",
+                "Wolisz pracować fizycznie czy umysłowo?",
+                "Wolisz oglądać komedie czy trzymające w napięciu thrillery?",
+                "Wolisz zwiedzać zabytkowe muzea czy wędrować po parku narodowym?",
+                "Wolisz mieć darmową kawę do końca życia czy darmowe paliwo/bilety komunikacji?",
+                "Wolisz zawsze wiedzieć, która jest godzina, czy zawsze wiedzieć, w którym kierunku jest północ?",
+                "Wolisz spać przy całkowitej ciszy czy przy szumie deszczu/białym szumie?",
+                "Wolisz mieć super wzrok czy super słuch?",
+                "Wolisz prowadzić własną firmę czy pracować w zgranej korporacji?",
+                "Wolisz jeść posiłki na słodko czy na ostro?",
+                "Wolisz być pionierem i odkryć coś nowego czy udoskonalić coś, co już istnieje?",
+                "Wolisz spędzić niedzielne popołudnie na spacerze w lesie czy w kawiarni z książką?",
+                "Wolisz nosić ubrania eleganckie czy luźny styl sportowy?",
+                "Wolisz grać w gry wideo na konsoli czy na komputerze (PC)?",
+                "Wolisz mieszkać w miejscu, gdzie zawsze jest lato, czy gdzie są wyraźne 4 pory roku?",
+                "Wolisz spędzić urodziny na dużej imprezie czy na kameralnym wyjeździe z bliskimi?",
+                "Wolisz czytać książki papierowe czy e-booki/audiobooki?",
+                "Wolisz mieć zdolność oddychania pod wodą czy niewrażliwość na skrajne temperatury?",
+                "Wolisz zjeść potrawę bardzo gorącą czy bardzo zimną?",
+                "Wolisz pisać piórem/długopisem czy na klawiaturze?",
+                "Wolisz spędzić czas na festiwalu muzycznym czy w cichym teatrze?",
+                "Wolisz uczyć się na własnych błędach czy słuchać rad innych?",
+                "Wolisz rozmawiać z kimś twarzą w twarz czy przez wideo-rozmowę?",
+                "Wolisz kupować rzeczy praktyczne czy urocze i estetyczne?",
+                "Wolisz mieć osobistego kucharza czy osobistego kierowcę?",
+                "Wolisz żyć bez słodyczy czy bez słonych przekąsek?",
+                "Wolisz zwiedzać świat samemu/sama czy w zgranej grupie znajomych?",
+                "Wolisz spędzić noc pod namiotem czy w luksusowym hotelu?",
+                "Wolisz brać szybki prysznic czy długą kąpiel w wannie?",
+                "Wolisz uczyć kogoś innego czy samemu się czegoś nowego dowiadywać?",
+                "Wolisz mieć zawsze porządek w pokoju czy kontrolowany chaos?",
+                "Wolisz pić sok pomarańczowy z miąższem czy bez miąższu?",
+                "Wolisz obejrzeć cały serial w jeden dzień czy dawkować go po jednym odcinku tygodniowo?",
+                "Wolisz umieć perfekcyjnie rysować czy perfekcyjnie śpiewać?",
+                "Wolisz nosić wyłącznie obuwie sportowe czy eleganckie buty?",
+                "Wolisz brać udział w wydarzeniach na żywo czy oglądać relacje w sieci?",
+                "Wolisz mieszkać blisko rodziny czy na druhie końca świata?",
+                "Wolisz jeść śniadanie zaraz po przebudzeniu czy dopiero po paru godzinach?",
+                "Wolisz podróżować pociągiem czy samolotem?",
+                "Wolisz mieć dom pełen roślin czy minimalistyczną przestrzeń?",
+                "Wolisz słuchać muzyki przez słuchawki czy na głośnikach?",
+                "Wolisz mieć talent do nauk ścisłych czy do sztuki i języków?",
+                "Wolisz zjeść domową zupę czy drugie danie?",
+                "Wolisz planować każdy dzień z wyprzedzeniem czy działać pod wpływem impulsu?",
+                "Wolisz umieć rozmawiać z dziećmi czy ze starszymi ludźmi?",
+                "Wolisz spędzić weekend bez telefonu czy bez znajomych?",
+                "Wolisz grać w sport drużynowy czy indywidualny?",
+                "Wolisz pić wodę gazowaną czy niegazowaną?",
+                "Wolisz mieć stałe godziny pracy/nauki czy elastyczny grafik?",
+                "Wolisz ubierać się w jasne kolory czy w ciemne?",
+                "Wolisz spędzić noc na oglądaniu gwiazd czy na podziwianiu wschodu słońca?",
+                "Wolisz mieć pewność, że wygrasz małą nagrodę, czy 50% szans na ogromną wygraną?",
+                "Wolisz być osobą, która tworzy zasady, czy tą, która sprawdza jak je naginać?",
+                "Wolisz spędzić fajny wieczór w kawiarni czy w domu?"
             ]
         };
 
