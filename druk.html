@@ -1,1 +1,53 @@
-tekst 
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stojak na stół - Youth Café</title>
+    <style>
+        @page { size: A4 portrait; margin: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; background: #0E2A3A; color: #ffffff; }
+        .a4-page { width: 210mm; height: 297mm; display: flex; flex-direction: column; box-sizing: border-box; }
+        .panel { height: 92mm; padding: 15px 25px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border-bottom: 2px dashed #E58B8B; box-sizing: border-box; position: relative; }
+        .fold-hint { position: absolute; bottom: 4px; right: 15px; font-size: 8px; color: #E58B8B; letter-spacing: 1px; font-weight: bold; }
+        .tab-panel { height: 21mm; background: #081B26; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .left-content { flex: 1; padding-right: 15px; }
+        .logo-title { font-size: 26px; font-weight: 800; margin: 0; color: #ffffff; }
+        .logo-sub { font-size: 13px; color: #E58B8B; font-weight: bold; margin-bottom: 12px; }
+        .instructions { font-size: 11px; line-height: 1.5; color: #e0e0e0; }
+        .instructions ol { padding-left: 15px; margin: 5px 0 0 0; }
+        .qr-box { background: #ffffff; padding: 10px; border-radius: 12px; text-align: center; border: 2px solid #E58B8B; }
+        .qr-box img { width: 110px; height: 110px; display: block; }
+        .qr-label { font-size: 9px; color: #0E2A3A; font-weight: 800; margin-top: 5px; letter-spacing: 0.5px; }
+    </style>
+</head>
+<body>
+<div class="a4-page">
+    <script>
+      const content = `
+        <div class="panel">
+          <div class="left-content">
+            <h1 class="logo-title">Youth Café</h1>
+            <div class="logo-sub">☕ KAWIARENKA MŁODZIEŻOWA ☕</div>
+            <div class="instructions">
+              <strong>Jak to działa?</strong>
+              <ol>
+                <li>Zeskanuj kod QR aparatem.</li>
+                <li>Wybierz kropkę z kategorią.</li>
+                <li>Losuj pytania i rozmawiajcie!</li>
+              </ol>
+            </div>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://kamilkorecki99-cloud.github.io/Youthcafe-&color=0E2A3A" alt="QR">
+            <div class="qr-label">ZESKANUJ MNIE</div>
+          </div>
+          <span class="fold-hint">✂ LINIA ZGIĘCIA</span>
+        </div>
+      `;
+      document.write(content + content + content);
+    </script>
+    <div class="tab-panel">▲ PASEK MOCUJĄCY (MIEJSCE NA KLEJ / TAŚMĘ) ▲</div>
+</div>
+</body>
+</html>
